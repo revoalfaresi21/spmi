@@ -82,7 +82,7 @@ export default function Home() {
           </Link>
 
           {/* Kartu 3: Akreditasi */}
-          <Link to="/akreditasi" className="block bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-4xlver:-translate-y-2 hover:bg-white/8 hover:border-yellow-500/40 transition-all duration-300 group shadow-lg relative overflow-hidden">
+          <Link to="/akreditasi" className="block bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-4xl hover:-translate-y-2 hover:bg-white/8 hover:border-yellow-500/40 transition-all duration-300 group shadow-lg relative overflow-hidden">
             {/* Aksen Glow Sudut */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 blur-2xl rounded-full"></div>
             

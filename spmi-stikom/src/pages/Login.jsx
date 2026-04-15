@@ -18,12 +18,16 @@ export default function Login() {
     setErrorMsg('');
 
     try {
-      // 2. KETUK PINTU DULU: Minta Token CSRF ke Server sebelum login
-      // PERHATIKAN: Kita pakai VITE_BASE_URL (tanpa /api) karena rute sanctum ada di luar grup API
-      await axios.get(`${import.meta.env.VITE_BASE_URL}/sanctum/csrf-cookie`);
+      // 1. KETUK PINTU: Minta Token CSRF
+      // Menggunakan VITE_API_URL karena mengarah ke folder Laravel (/api)
+      await axios.get(`${import.meta.env.VITE_API_URL}/sanctum/csrf-cookie`);
 
-      // 3. SETELAH PINTU DIBUKA: Baru kirim data Login
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {
+      // 2. KIRIM DATA LOGIN (PERHATIKAN JALURNYA!)
+      // Kita pakai VITE_API_URL lalu ditambah '/api/login'. 
+      // Hasil akhirnya adalah ".../api/api/login" (Ya, api-nya ada DUA KALI!). 
+      // - 'api' pertama adalah nama folder fisik di cPanel.
+      // - 'api' kedua adalah rute internal dari routes/api.php Laravel.
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, {
         email: email,
         password: password
       });

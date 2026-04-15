@@ -35,13 +35,13 @@ function Navbar() {
       }`}
     >
       {/* Garis Gradasi Tipis di Bawah Navbar */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#3B82F6]/50 to-transparent opacity-50"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-[#3B82F6]/50 to-transparent opacity-50"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between h-16 items-center">
           
           {/* --- LOGO --- */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-4 group">
+          <Link to="/" className="shrink-0 flex items-center gap-4 group">
             <div className="relative">
               {/* Efek Cahaya di belakang logo */}
               <div className="absolute inset-0 bg-white/20 rounded-full blur-md group-hover:bg-[#3B82F6]/30 transition-colors duration-500"></div>
@@ -53,7 +53,7 @@ function Navbar() {
             </div>
             <div className="font-black text-lg md:text-xl tracking-wider text-white flex flex-col justify-center">
               <span className="leading-none group-hover:text-cyan-100 transition-colors">
-                SPMI <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-cyan-400">STIKOM</span>
+                SPMI <span className="text-transparent bg-clip-text bg-linear-to-r from-[#3B82F6] to-cyan-400">STIKOM</span>
               </span>
             </div>
           </Link>
@@ -101,7 +101,7 @@ function Navbar() {
       {/* --- MOBILE MENU DROPDOWN --- */}
       <div 
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-[#0B192C]/95 backdrop-blur-2xl border-white/10 shadow-2xl absolute w-full left-0 ${
-          isMenuOpen ? 'max-h-[500px] border-b opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-125 border-b opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="px-4 py-4 space-y-1">
@@ -113,7 +113,7 @@ function Navbar() {
                 to={link.path} 
                 className={`block px-5 py-3 rounded-2xl text-sm font-bold transition-all duration-300 ${
                   isActive 
-                    ? 'bg-gradient-to-r from-[#3B82F6]/20 to-transparent text-[#3B82F6] border-l-4 border-[#3B82F6] translate-x-1' 
+                    ? 'bg-linear-to-r from-[#3B82F6]/20 to-transparent text-[#3B82F6] border-l-4 border-[#3B82F6] translate-x-1' 
                     : 'text-slate-300 hover:bg-white/5 hover:text-white border-l-4 border-transparent hover:translate-x-1'
                 }`}
                 onClick={() => setIsMenuOpen(false)}

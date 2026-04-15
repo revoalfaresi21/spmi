@@ -12,8 +12,8 @@ export default function Profil() {
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in relative">
       
       {/* --- EFEK CAHAYA AMBIENT (BACKGROUND GLOW) --- */}
-      <div className="absolute top-[10%] left-[20%] w-[400px] h-[400px] bg-[#3B82F6]/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[20%] right-[10%] w-[300px] h-[300px] bg-rose-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-[10%] left-[20%] w-100 h-100 bg-[#3B82F6]/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[20%] right-[10%] w-75 h-75 bg-rose-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       {/* --- 1. HEADER SECTION --- */}
       <div className="text-center mb-16 relative z-10">
@@ -22,7 +22,7 @@ export default function Profil() {
           <span className="text-indigo-400 text-xs font-bold tracking-[0.2em] uppercase">Tentang Kami</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-          Profil <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">SPMI</span>
+          Profil <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-cyan-400">SPMI</span>
         </h1>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
           Mengenal lebih dekat struktur, visi, dan arah gerak Sistem Penjaminan Mutu Internal di lingkungan STIKOM Poltek Cirebon.
@@ -33,7 +33,7 @@ export default function Profil() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24 relative z-10">
         
         {/* Kartu VISI */}
-        <div className="bg-gradient-to-br from-[#3B82F6]/10 to-transparent backdrop-blur-xl border border-[#3B82F6]/20 p-10 md:p-12 rounded-[3rem] relative overflow-hidden group shadow-2xl">
+        <div className="bg-linear-to-br from-[#3B82F6]/10 to-transparent backdrop-blur-xl border border-[#3B82F6]/20 p-10 md:p-12 rounded-[3rem] relative overflow-hidden group shadow-2xl">
           {/* Ikon Tanda Kutip Air (Watermark) */}
           <div className="absolute -right-8 -bottom-10 text-[12rem] text-[#3B82F6]/5 font-serif leading-none select-none group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-700">"</div>
           
@@ -50,9 +50,9 @@ export default function Profil() {
         </div>
 
         {/* Kartu MISI */}
-        <div className="bg-gradient-to-br from-rose-500/10 to-transparent backdrop-blur-xl border border-rose-500/20 p-10 md:p-12 rounded-[3rem] relative overflow-hidden group shadow-2xl">
+        <div className="bg-linear-to-br from-rose-500/10 to-transparent backdrop-blur-xl border border-rose-500/20 p-10 md:p-12 rounded-[3rem] relative overflow-hidden group shadow-2xl">
            {/* Aksen Garis Kiri */}
-           <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-rose-500 to-transparent opacity-50"></div>
+           <div className="absolute top-0 left-0 w-2 h-full bg-linear-to-b from-rose-500 to-transparent opacity-50"></div>
 
           <div className="flex items-center gap-4 mb-8 relative z-10">
             <div className="w-14 h-14 rounded-2xl bg-rose-500/20 flex items-center justify-center text-3xl border border-rose-500/30 shadow-inner">
@@ -81,12 +81,12 @@ export default function Profil() {
       <div className="relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-black text-white mb-4 tracking-tight">Struktur Organisasi</h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto rounded-full"></div>
+          <div className="w-16 h-1.5 bg-linear-to-r from-indigo-500 to-cyan-400 mx-auto rounded-full"></div>
         </div>
 
         {/* Kanvas Blueprint */}
-        <div className="bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md border border-white/10 rounded-[3rem] p-4 md:p-8 shadow-2xl">
-          <div className="border-2 border-dashed border-white/10 rounded-[2rem] bg-[#0B192C]/50 p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+        <div className="bg-linear-to-b from-white/5 to-transparent backdrop-blur-md border border-white/10 rounded-[3rem] p-4 md:p-8 shadow-2xl">
+          <div className="border-2 border-dashed border-white/10 rounded-4xl bg-[#0B192C]/50 p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden group">
             
             {/* Animasi Scanline (Efek Teknologi) */}
             <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/20 shadow-[0_0_20px_rgba(6,182,212,0.5)] transform -translate-y-full group-hover:animate-[scan_3s_ease-in-out_infinite]"></div>

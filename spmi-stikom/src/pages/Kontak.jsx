@@ -24,8 +24,8 @@ export default function Kontak() {
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fade-in relative min-h-screen">
       
       {/* --- EFEK CAHAYA AMBIENT --- */}
-      <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
-      <div className="absolute bottom-[10%] right-[5%] w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-[10%] left-[5%] w-100 h-100 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-[10%] right-[5%] w-75 h-75 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       {/* --- 1. HEADER SECTION --- */}
       <div className="text-center mb-16 relative z-10">
@@ -34,7 +34,7 @@ export default function Kontak() {
           <span className="text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase">Pusat Layanan</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-          Hubungi <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Kami</span>
+          Hubungi <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">Kami</span>
         </h1>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
           Ada pertanyaan terkait penjaminan mutu, dokumen, atau jadwal audit? Silakan kirimkan pesan atau kunjungi kantor kami langsung.
@@ -47,7 +47,7 @@ export default function Kontak() {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Kartu Alamat */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-[2rem] flex items-start gap-5 hover:-translate-y-1 hover:border-cyan-500/30 transition-all duration-300 group shadow-lg">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl flex items-start gap-5 hover:-translate-y-1 hover:border-cyan-500/30 transition-all duration-300 group shadow-lg">
             <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-cyan-500/20">
               📍
             </div>
@@ -59,7 +59,7 @@ export default function Kontak() {
           </div>
 
           {/* Kartu Email */}
-          <a href="mailto:spmi@stikompoltekcirebon.ac.id" className="block bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-[2rem] flex items-start gap-5 hover:-translate-y-1 hover:border-blue-500/30 transition-all duration-300 group shadow-lg">
+          <a href="mailto:spmi@stikompoltekcirebon.ac.id" className="block bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl items-start gap-5 hover:-translate-y-1 hover:border-blue-500/30 transition-all duration-300 group shadow-lg">
             <div className="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-blue-500/20">
               📧
             </div>
@@ -71,7 +71,7 @@ export default function Kontak() {
           </a>
 
           {/* Kartu Telepon */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-[2rem] flex items-start gap-5 hover:-translate-y-1 hover:border-emerald-500/30 transition-all duration-300 group shadow-lg">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl flex items-start gap-5 hover:-translate-y-1 hover:border-emerald-500/30 transition-all duration-300 group shadow-lg">
             <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-emerald-500/20">
               📞
             </div>
@@ -86,7 +86,7 @@ export default function Kontak() {
 
         {/* --- 3. FORMULIR KONTAK (KANAN) --- */}
         <div className="lg:col-span-7">
-          <div className="bg-gradient-to-br from-white/5 to-transparent backdrop-blur-2xl border border-white/10 p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+          <div className="bg-linear-to-br from-white/5 to-transparent backdrop-blur-2xl border border-white/10 p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
             
             {/* Aksen Hiasan Form */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
@@ -145,7 +145,7 @@ export default function Kontak() {
                 className={`w-full py-4 rounded-xl text-sm font-black uppercase tracking-widest transition-all duration-300 flex justify-center items-center gap-2 ${
                   isSubmitting 
                     ? 'bg-slate-700 text-slate-400 cursor-wait' 
-                    : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:-translate-y-1'
+                    : 'bg-linear-to-r from-cyan-500 to-blue-600 text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:-translate-y-1'
                 }`}
               >
                 {isSubmitting ? (

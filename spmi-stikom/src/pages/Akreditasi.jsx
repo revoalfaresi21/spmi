@@ -88,12 +88,12 @@ export default function Akreditasi() {
             <div className="mb-20">
               <div className="flex items-center gap-4 mb-8">
                 <h2 className="text-xs font-bold text-yellow-500 uppercase tracking-widest shrink-0">Akreditasi Institusi</h2>
-                <div className="h-px flex-1 bg-gradient-to-r from-yellow-500/40 to-transparent"></div>
+                <div className="h-px flex-1 bg-linear-to-r from-yellow-500/40 to-transparent"></div>
               </div>
               
               <div className="flex justify-center">
                 {dataInstitusi.map((item) => (
-                  <div key={item.id} className="w-full bg-gradient-to-br from-[#0B192C] to-[#0f233f] border border-yellow-500/40 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-[0_10px_40px_rgba(234,179,8,0.1)] group">
+                  <div key={item.id} className="w-full bg-linear-to-br from-[#0B192C] to-[#0f233f] border border-yellow-500/40 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-[0_10px_40px_rgba(234,179,8,0.1)] group">
                     {/* Glow Effect */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[80px] rounded-full pointer-events-none"></div>
                     
@@ -151,9 +151,9 @@ export default function Akreditasi() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {dataProdi.length > 0 ? (
                 dataProdi.map((item) => (
-                  <div key={item.id} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-[1.5rem] relative hover:bg-white/10 transition-colors group flex flex-col h-full">
+                  <div key={item.id} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl relative hover:bg-white/10 transition-colors group flex flex-col h-full">
                     {/* Aksen Biru di Kiri */}
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[#3B82F6]/50 group-hover:bg-[#3B82F6] transition-colors rounded-l-[1.5rem]"></div>
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[#3B82F6]/50 group-hover:bg-[#3B82F6] transition-colors rounded-l-3xl"></div>
                     
                     <div className="pl-4 flex-1">
                       <p className="text-[10px] text-[#3B82F6] font-black tracking-widest mb-1.5 uppercase">Program Studi</p>
