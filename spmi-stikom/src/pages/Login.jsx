@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// 1. ATURAN WAJIB SANCTUM: React harus selalu membawa "KTP" (Cookie)
+axios.defaults.withCredentials = true;
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,10 +15,14 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setErrorMsg(''); // Reset pesan error
+    setErrorMsg('');
 
     try {
-      // PERHATIKAN: Di sinilah VITE_API_URL digunakan dengan backtick (`)
+      // 2. KETUK PINTU DULU: Minta Token CSRF ke Server sebelum login
+      // PERHATIKAN: Kita pakai VITE_BASE_URL (tanpa /api) karena rute sanctum ada di luar grup API
+      await axios.get(`${import.meta.env.VITE_BASE_URL}/sanctum/csrf-cookie`);
+
+      // 3. SETELAH PINTU DIBUKA: Baru kirim data Login
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {
         email: email,
         password: password
@@ -25,12 +32,13 @@ export default function Login() {
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         
-        // Arahkan ke halaman Admin Dashboard (sesuaikan dengan rute Anda)
+        // Arahkan ke halaman Admin Dashboard
         navigate('/admin/upload'); 
       }
     } catch (error) {
       console.error("Login gagal", error);
-      // Tampilkan pesan error dari backend jika ada, atau pesan bawaan
+      
+      // Tampilkan pesan error dari backend
       if (error.response && error.response.data && error.response.data.message) {
         setErrorMsg(error.response.data.message);
       } else {
@@ -53,10 +61,8 @@ export default function Login() {
         {/* --- KOTAK LOGIN (GLASSMORPHISM) --- */}
         <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
           
-          {/* Hiasan Cahaya di dalam kotak */}
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/20 blur-3xl rounded-full"></div>
 
-          {/* Header Login */}
           <div className="text-center mb-10 relative z-10">
             <div className="flex justify-center mb-6">
                <img 
@@ -69,7 +75,6 @@ export default function Login() {
             <p className="mt-2 text-sm text-slate-400">Masuk untuk mengakses Command Center SPMI</p>
           </div>
 
-          {/* Pesan Error (Muncuk jika gagal login) */}
           {errorMsg && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start gap-3 animate-fade-in relative z-10">
               <span className="text-red-400 mt-0.5">⚠️</span>
@@ -77,7 +82,6 @@ export default function Login() {
             </div>
           )}
 
-          {/* Form Login */}
           <form className="space-y-6 relative z-10" onSubmit={handleLogin}>
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Alamat Email</label>
@@ -126,7 +130,6 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Footer Bantuan */}
           <div className="mt-8 text-center relative z-10 border-t border-white/5 pt-6">
              <p className="text-xs text-slate-500 font-medium">Lupa kata sandi? Hubungi Tim IT Administrator.</p>
           </div>
