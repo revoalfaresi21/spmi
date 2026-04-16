@@ -51,33 +51,42 @@ export default function Kontak() {
             <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-cyan-500/20">
               📍
             </div>
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-lg font-bold text-white mb-2">Alamat Kampus</h3>
               <p className="text-sm text-slate-400 leading-relaxed font-medium">STIKOM Poltek Cirebon</p>
-              <p className="text-sm text-slate-400 leading-relaxed">Jl. Tuparev, Cirebon, Jawa Barat</p>
+              <p className="text-sm text-slate-400 leading-relaxed">Jl. Sriwijaya No. 1, Kedawung</p>
+              <p className="text-sm text-slate-400 leading-relaxed">Kabupaten Cirebon, Jawa Barat.</p>
             </div>
           </div>
 
-          {/* Kartu Email */}
-          <a href="mailto:spmi@stikompoltekcirebon.ac.id" className="block bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl items-start gap-5 hover:-translate-y-1 hover:border-blue-500/30 transition-all duration-300 group shadow-lg">
+          {/* Kartu Email (Sudah Diperbaiki Flex-nya) */}
+          <a href="mailto:spmi@stikompoltekcirebon.ac.id" className="flex bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl items-start gap-5 hover:-translate-y-1 hover:border-blue-500/30 transition-all duration-300 group shadow-lg">
             <div className="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-blue-500/20">
               📧
             </div>
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Email Resmi</h3>
               <p className="text-sm text-slate-400 leading-relaxed break-all">spmi@stikompoltekcirebon.ac.id</p>
               <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-2 inline-block opacity-0 group-hover:opacity-100 transition-opacity">Kirim Email →</span>
             </div>
           </a>
 
-          {/* Kartu Telepon */}
+          {/* Kartu Telepon / WhatsApp (Sudah Ditambahkan Link WA) */}
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-4xl flex items-start gap-5 hover:-translate-y-1 hover:border-emerald-500/30 transition-all duration-300 group shadow-lg">
             <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300 border border-emerald-500/20">
               📞
             </div>
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-lg font-bold text-white mb-2">Telepon / WhatsApp</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">Humas: (0231) XXXXXXX</p>
+              <a 
+                href="https://wa.me/6281111112636" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-sm text-slate-400 leading-relaxed hover:text-emerald-400 transition-colors flex items-center gap-2 mb-1 w-fit group/wa"
+              >
+                Humas: 0811-1111-2636
+                <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold group-hover/wa:bg-emerald-500 group-hover/wa:text-white transition-all">Chat WA</span>
+              </a>
               <p className="text-sm text-slate-400 leading-relaxed">Jam Kerja: 08.00 - 16.00 WIB</p>
             </div>
           </div>

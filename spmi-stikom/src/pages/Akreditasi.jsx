@@ -9,7 +9,7 @@ export default function Akreditasi() {
   useEffect(() => {
       const fetchAkreditasi = async () => {
         try {
-          const res = await axios.get(`${import.meta.env.VITE_API_URL}/akreditasi`);
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/akreditasi`);
           
           // Sabuk Pengaman Ekstra Ketat
           let dataArray = [];

@@ -7,7 +7,7 @@ export default function AMI() {
   useEffect(() => {
       const fetchAMI = async () => {
         try {
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/ami`);
+          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/ami`);
           
           // --- Sabuk Pengaman Ekstra Ketat ---
           let dataArray = [];
@@ -55,7 +55,7 @@ export default function AMI() {
           { icon: '🔄', title: 'Frekuensi Siklus', desc: 'Dilaksanakan secara rutin minimal 1 (satu) kali dalam setahun untuk setiap unit kerja atau program studi di lingkungan kampus.', color: 'from-[#3B82F6]/20 to-transparent', border: 'border-[#3B82F6]/30', text: 'text-[#3B82F6]' },
           { icon: '📈', title: 'Tindak Lanjut', desc: 'Hasil temuan AMI digunakan sebagai dasar Rapat Tinjauan Manajemen (RTM) untuk merumuskan langkah peningkatan mutu berkelanjutan.', color: 'from-emerald-500/20 to-transparent', border: 'border-emerald-500/30', text: 'text-emerald-400' }
         ].map((info, i) => (
-          <div key={i} className={`bg-linear-to-b ${info.color} bg-white/5 backdrop-blur-xl border ${info.border} p-6 md:p-8 rounded-4xlver:-translate-y-1 transition-transform duration-300 shadow-lg`}>
+          <div key={i} className={`bg-linear-to-b ${info.color} bg-white/5 backdrop-blur-xl border ${info.border} p-6 md:p-8 rounded-4xl hover:-translate-y-1 transition-transform duration-300 shadow-lg`}>
             <div className="text-4xl mb-4">{info.icon}</div>
             <h3 className={`text-lg font-bold ${info.text} mb-3`}>{info.title}</h3>
             <p className="text-sm text-slate-300 leading-relaxed opacity-90">{info.desc}</p>

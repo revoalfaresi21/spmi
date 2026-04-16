@@ -11,7 +11,7 @@ export default function Unduhan() {
   useEffect(() => {
     const fetchUnduhan = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/unduhan`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/unduhan`);
         
         // --- Sabuk Pengaman Ekstra Ketat ---
         let dataArray = [];

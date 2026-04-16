@@ -113,7 +113,7 @@ function TabDokumenMutu() {
 
 const fetchDocs = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/dokumen-mutu`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/dokumen-mutu`);
       
       // Sabuk Pengaman Ekstra Ketat
       // Pastikan kita mengekstrak array-nya, entah itu ada di res.data.data, res.data, atau res sendiri
@@ -147,7 +147,7 @@ const fetchDocs = async () => {
     formData.append('file', file);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/dokumen-mutu`, formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/dokumen-mutu`, formData, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
       setForm({ title: '', category: 'Kebijakan' }); setFile(null);
@@ -161,7 +161,7 @@ const fetchDocs = async () => {
   const handleDelete = async (id) => {
     if (window.confirm('PERINGATAN: Dokumen ini akan dihapus permanen. Lanjutkan?')) {
       try {
-        await axios.delete(`${import.meta.env.VITE_API_URL}/dokumen-mutu/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/dokumen-mutu/${id}`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
         fetchDocs(); // Refresh tabel setelah sukses DELETE
@@ -239,7 +239,7 @@ function TabAkreditasi() {
 
   const fetchData = async () => {
     try { 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/akreditasi`); 
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/akreditasi`); 
       
       // Sabuk Pengaman (Bulletproof Array Check)
       let dataArray = [];
@@ -270,7 +270,7 @@ function TabAkreditasi() {
     formData.append('file', file);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/akreditasi`, formData, { 
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/akreditasi`, formData, { 
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
       });
       
@@ -289,7 +289,7 @@ function TabAkreditasi() {
   const handleDelete = async (id) => {
     if (window.confirm('PERINGATAN: Sertifikat ini akan dihapus permanen. Lanjutkan?')) {
       try {
-        await axios.delete(`${import.meta.env.VITE_API_URL}/akreditasi/${id}`, { 
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/akreditasi/${id}`, { 
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
         });
         fetchData();
@@ -413,7 +413,7 @@ function TabAMI() {
 
   const fetchData = async () => {
     try { 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/ami`); 
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/ami`); 
       
       // Sabuk Pengaman Array
       let dataArray = [];
@@ -430,18 +430,35 @@ function TabAMI() {
   
   useEffect(() => { fetchData(); }, []);
 
-  const handlePost = async (e) => {
+const handlePost = async (e) => {
     e.preventDefault();
     if (!form.tahun_akademik || !file) return alert('Lengkapi Tahun Akademik dan File PDF Laporan!');
     setIsLoading(true);
     
     const formData = new FormData();
-    Object.keys(form).forEach(key => formData.append(key, form[key]));
+    
+    // --- PROSES PENERJEMAHAN UNTUK LARAVEL ---
+    
+    // 1. Gabungkan Tahun Akademik dan Semester menjadi "periode"
+    const periodeGabungan = `${form.tahun_akademik} (${form.semester})`;
+    formData.append('periode', periodeGabungan);
+    
+    // 2. Isi "pelaksana" (karena wajib, kita bisa isi dengan deskripsi atau teks default)
+    formData.append('pelaksana', form.deskripsi ? form.deskripsi : 'Tim SPMI STIKOM');
+    
+    // 3. Isi "status" (Laravel hanya menerima 'Selesai' atau 'Sedang Berjalan')
+    formData.append('status', 'Selesai'); 
+    
+    // 4. Masukkan file PDF-nya (Ternyata namanya memang 'file' di Laravel)
     formData.append('file', file);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/ami`, formData, { 
-        headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/ami`, formData, { 
+        headers: { 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+        } 
       });
       
       setForm({ tahun_akademik: '', semester: 'Ganjil', deskripsi: '' }); 
@@ -449,6 +466,7 @@ function TabAMI() {
       document.getElementById('file-ami').value = '';
       fetchData();
     } catch (err) { 
+      console.error(err.response?.data); // Cek detail error di console jika masih gagal
       alert('Gagal mengunggah laporan AMI.'); 
     } finally { 
       setIsLoading(false); 
@@ -458,7 +476,7 @@ function TabAMI() {
   const handleDelete = async (id) => {
     if (window.confirm('PERINGATAN: Laporan AMI ini akan dihapus permanen. Lanjutkan?')) {
       try {
-        await axios.delete(`${import.meta.env.VITE_API_URL}/ami/${id}`, { 
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/ami/${id}`, { 
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
         });
         fetchData();
@@ -571,7 +589,7 @@ function TabUnduhan() {
 
   const fetchData = async () => {
     try { 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/unduhan`); 
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/unduhan`); 
       
       // Sabuk Pengaman Array
       let dataArray = [];
@@ -599,7 +617,7 @@ function TabUnduhan() {
     formData.append('file', file);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/unduhan`, formData, { 
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/unduhan`, formData, { 
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
       });
       
@@ -617,7 +635,7 @@ function TabUnduhan() {
   const handleDelete = async (id) => {
     if (window.confirm('PERINGATAN: File aset ini akan dihapus permanen. Lanjutkan?')) {
       try {
-        await axios.delete(`${import.meta.env.VITE_API_URL}/unduhan/${id}`, { 
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/unduhan/${id}`, { 
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } 
         });
         fetchData();
